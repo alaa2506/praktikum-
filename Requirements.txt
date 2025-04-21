@@ -1,0 +1,145 @@
+Mad Machines - Requirements Documentation
+
+1. Introduction
+
+Mad Machines is a physics-based puzzle game inspired by "Crazy Machines" (2005). The game allows players to build contraptions using various objects to solve puzzles. This document outlines the requirements for the game.
+
+2. User Stories
+
+2.1 As a player, I want to switch between editor and simulation modes so that I can build and test my contraptions.
+- The game should have a play button to start the simulation
+- The game should have a reset button to stop the simulation and return to editor mode
+
+2.2 As a player, I want to place objects from my inventory onto the game field so that I can build a contraption.
+- The game should display available objects in an inventory panel
+- The player should be able to select an object type from the inventory
+- The player should be able to place the selected object on the game field by clicking
+- The inventory should show the number of available objects of each type
+
+2.3 As a player, I want to remove objects from the game field so that I can modify my contraption.
+- The player should be able to remove objects by right-clicking on them
+- Removed objects should be returned to the inventory
+
+2.4 As a player, I want to see when win conditions are met so that I know I've completed the level.
+- The game should display win conditions visually
+- The game should check if win conditions are satisfied during simulation
+- The game should notify the player when all win conditions are satisfied
+
+2.5 As a player, I want to see restriction zones so that I know where I can't place objects.
+- The game should display restriction zones visually
+- The game should prevent placing objects in restriction zones
+
+3. Functional Requirements
+
+3.1 Core Features
+
+3.1.1 Simulation/Editor Toggle
+- The game must allow switching between simulation and editor modes
+- In editor mode, the player can place and remove objects
+- In simulation mode, the physics simulation runs and objects interact
+
+3.1.2 Physics Objects
+- The game must support static objects (planks, logs)
+- The game must support dynamic objects (balls, boxes, dominos)
+- The game must support special objects (balloons, buckets)
+
+3.1.3 Editor Functionality
+- The player must be able to place objects from the inventory
+- The player must be able to remove objects from the game field
+- The player must not be able to place objects in restriction zones
+
+3.1.4 Level Loading
+- The game must be able to load levels from JSON files
+- Levels must include static objects, dynamic objects, win conditions, restriction zones, and inventory
+
+3.1.5 Puzzle Mode
+- The game must include a puzzle mode with level progression
+- Each level must have win conditions that must be satisfied to complete the level
+
+3.1.6 Graphics
+- The game must render objects using simple shapes and colors
+- The game must update the display in real-time during simulation
+
+3.1.7 Game Mechanics
+- The game must include an inventory system with limited objects
+- The game must include restriction zones where objects cannot be placed
+- The game must include win conditions that must be satisfied to complete the level
+
+3.2 Elective Features (Choose 3)
+
+3.2.1 Menus
+- The game should include a main menu
+- The game should include a level selection screen with thumbnails and level info
+- The game should include a pause screen during simulation
+
+3.2.2 More Objects
+- The game should include additional objects like ropes, anchors, and levers
+
+3.2.3 Machine Interface
+- The game should support a headless mode (no graphics)
+- The game should support a command-line interface
+- The game should support game state logging for AI testing
+
+3.2.4 Level Editor+
+- The game should support drag & drop functionality
+- The game should support object rotation and movement
+- The game should support undo/redo functionality
+
+3.2.5 Improved Graphics
+- The game should render objects with textures/images
+- The game should include background visuals
+- The game should include collision sounds
+
+4. Non-Functional Requirements
+
+4.1 Performance
+- The game must maintain a frame rate of at least 30 FPS during simulation
+- The game must respond to user input within 100ms
+
+4.2 Usability
+- The game must have a clear and intuitive user interface
+- The game must provide visual feedback for user actions
+- The game must provide clear instructions for how to play
+
+4.3 Compatibility
+- The game must run on Java 11 or higher
+- The game must run on the PC pool computers at the university
+
+4.4 Maintainability
+- The code must follow the MVC architecture pattern
+- The code must be well-documented with Javadoc comments
+- The code must have at least 80% test coverage (excluding GUI classes)
+- The code must follow the coding style guidelines
+
+5. Use Case Diagrams
+
+5.1 Main Use Cases
+
+[Player] -- (Switch between editor and simulation modes)
+[Player] -- (Place objects from inventory)
+[Player] -- (Remove objects from game field)
+[Player] -- (Complete level by satisfying win conditions)
+
+5.2 Level Loading Use Cases
+
+[Player] -- (Load level)
+[Player] -- (Reset level)
+
+5.3 Object Interaction Use Cases
+
+[Player] -- (Select object type from inventory)
+[Player] -- (Place object on game field)
+[Player] -- (Remove object from game field)
+
+6. Acceptance Criteria
+
+6.1 The game must allow switching between editor and simulation modes using play/reset buttons.
+6.2 The game must allow placing objects from the inventory onto the game field.
+6.3 The game must allow removing objects from the game field.
+6.4 The game must display win conditions and check if they are satisfied during simulation.
+6.5 The game must display restriction zones and prevent placing objects in them.
+6.6 The game must load levels from JSON files.
+6.7 The game must include a puzzle mode with level progression.
+6.8 The game must render objects using simple shapes and colors.
+6.9 The game must update the display in real-time during simulation.
+6.10 The game must include an inventory system with limited objects.

@@ -1,0 +1,159 @@
+Mad Machines - Architecture Documentation
+
+1. Overview
+
+The Mad Machines game is a physics-based puzzle game inspired by "Crazy Machines" (2005). The game allows players to build contraptions using various objects to solve puzzles. The architecture follows the Model-View-Controller (MVC) pattern to separate concerns and make the code more maintainable.
+
+2. Architecture
+
+2.1 Model-View-Controller (MVC) Pattern
+
+The game is structured using the MVC pattern:
+
+- Model: Represents the game state and logic
+- View: Handles the user interface and rendering
+- Controller: Manages user input and updates the model
+
+2.2 Component Diagram
+
+[Model]
+  |
+  +--> [Objects] (GameObject, StaticObject, DynamicObject, SpecialObject)
+  |
+  +--> [Physics] (PhysicsWorld)
+  |
+  +--> [Level] (Level, WinCondition, RestrictionZone)
+
+[View]
+  |
+  +--> [GUI] (Gui)
+
+[Controller]
+  |
+  +--> [GameController]
+
+3. Package Structure
+
+- mm
+  - controller: Contains the game controller classes
+  - gui: Contains the GUI classes
+  - model
+    - objects: Contains the game object classes
+      - impl: Contains concrete implementations of game objects
+    - physics: Contains physics-related classes
+    - level: Contains level-related classes
+
+4. Class Descriptions
+
+4.1 Model
+
+4.1.1 Objects
+
+- GameObject: Abstract base class for all game objects
+  - Properties: position, rotation, physics body
+  - Methods: updateFromPhysics(), createPhysicsBody(), render()
+
+- StaticObject: Abstract class for static (immovable) objects
+  - Extends: GameObject
+  - Examples: Plank, Log
+
+- DynamicObject: Abstract class for dynamic (movable) objects
+  - Extends: GameObject
+  - Properties: density, friction, restitution
+  - Examples: Ball, Box, Domino
+
+- SpecialObject: Abstract class for objects with special behaviors
+  - Extends: GameObject
+  - Methods: updateSpecialBehavior()
+  - Examples: Balloon, Bucket
+
+4.1.2 Physics
+
+- PhysicsWorld: Wrapper for the jBox2D physics engine
+  - Properties: world, game objects
+  - Methods: update(), addGameObject(), removeGameObject()
+
+4.1.3 Level
+
+- Level: Represents a game level
+  - Properties: name, description, static objects, dynamic objects, win conditions, restriction zones, inventory
+  - Methods: checkWinConditions(), isInRestrictionZone()
+
+- WinCondition: Represents a win condition
+  - Properties: object type, area, satisfied
+  - Methods: checkSatisfied()
+
+- RestrictionZone: Represents a restriction zone
+  - Properties: area
+  - Methods: contains()
+
+- LevelLoader: Loads levels from JSON files
+  - Methods: loadLevel(), saveLevel()
+
+4.2 View
+
+- Gui: The main GUI class
+  - Properties: game canvas, graphics context, editor mode
+  - Methods: render(), setupMouseHandlers(), createToolbar(), createInventoryPanel()
+
+4.3 Controller
+
+- GameController: Controls the game state and logic
+  - Properties: physics world, current level, simulating
+  - Methods: loadLevel(), resetLevel(), startSimulation(), stopSimulation(), update(), placeObject(), removeObject()
+
+5. Interaction Diagrams
+
+5.1 Starting the Game
+
+User -> Main -> GameController (create) -> Gui (create, setGameController) -> Gui (start)
+
+5.2 Loading a Level
+
+User -> Gui (click load) -> GameController (loadLevel) -> LevelLoader (loadLevel) -> Level (create) -> GameController (resetLevel)
+
+5.3 Placing an Object
+
+User -> Gui (click canvas) -> GameController (placeObject) -> Level (removeInventoryItem) -> GameController (createGameObject) -> PhysicsWorld (addGameObject)
+
+5.4 Starting Simulation
+
+User -> Gui (click play) -> GameController (startSimulation) -> Gui (game loop) -> GameController (update) -> PhysicsWorld (update) -> Level (checkWinConditions)
+
+6. Design Patterns
+
+6.1 Model-View-Controller (MVC)
+
+The game uses the MVC pattern to separate concerns:
+- Model: Represents the game state (Level, GameObject, PhysicsWorld)
+- View: Handles the user interface (Gui)
+- Controller: Manages user input and updates the model (GameController)
+
+6.2 Factory Method
+
+The GameController uses a factory method to create game objects:
+- createGameObject(): Creates a game object of the specified type
+
+6.3 Strategy
+
+The different types of game objects use the Strategy pattern:
+- GameObject defines the interface
+- StaticObject, DynamicObject, and SpecialObject implement different strategies
+
+7. Future Improvements
+
+7.1 Additional Features
+
+- Menus: Add a main menu and a level selection screen
+- More Objects: Extend the object set with ropes, anchors, levers
+- Machine Interface: Support a headless mode for AI testing
+- Level Editor+: Enable drag & drop, object rotation/movement, undo/redo
+- Improved Graphics: Render objects with textures/images, add background visuals, collision sounds
+
+7.2 Technical Improvements
+
+- Proper JSON parsing: Replace the simplified level loading with a proper JSON parser
+- Object factory: Implement a proper object factory pattern
+- Event system: Implement an event system for communication between components
+- Collision detection: Improve collision detection and handling
+- Performance optimization: Optimize rendering and physics simulation

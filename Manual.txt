@@ -1,0 +1,107 @@
+Mad Machines - User Manual
+
+1. Introduction
+
+Welcome to Mad Machines, a physics-based puzzle game inspired by "Crazy Machines" (2005). In this game, you'll build contraptions using various objects to solve puzzles. This manual will guide you through the game's features and how to play.
+
+2. Getting Started
+
+2.1 System Requirements
+
+- Java 11 or higher
+- Maven (for building from source)
+
+2.2 Installation
+
+To build the project from source:
+
+```bash
+mvn clean install
+```
+
+To run the project:
+
+```bash
+mvn javafx:run
+```
+
+3. Game Interface
+
+The game interface consists of the following components:
+
+3.1 Toolbar
+
+The toolbar is located at the top of the screen and contains the following buttons:
+
+- Play/Reset Button: Switches between editor and simulation modes
+- Title: Displays the game title
+
+3.2 Game Canvas
+
+The game canvas is the main area where the game takes place. It displays the game objects, win conditions, and restriction zones.
+
+3.3 Inventory Panel
+
+The inventory panel is located on the right side of the screen and displays the available objects that can be placed on the game field. It shows the object type and the number of available objects.
+
+4. Game Objects
+
+4.1 Static Objects
+
+- Plank: A long, thin rectangle that serves as a platform or barrier
+
+4.2 Dynamic Objects
+
+- Ball: A circle that can roll and bounce
+  - Regular Ball: Default ball with medium density and restitution
+  - Bouncy Ball: Ball with high restitution (very bouncy)
+  - Heavy Ball: Ball with high density (heavy)
+
+4.3 Special Objects
+
+- Balloon: A circle that floats upward due to buoyancy
+
+5. How to Play
+
+5.1 Building a Contraption
+
+1. Select an object type from the inventory panel by clicking on it
+2. Place the object on the game field by clicking where you want it to appear
+3. Remove an object by right-clicking on it
+
+5.2 Testing a Contraption
+
+1. Click the Play button to start the simulation
+2. Watch as the objects interact with each other
+3. If the win conditions are met, you'll be notified
+4. Click the Reset button to stop the simulation and return to editor mode
+
+5.3 Win Conditions
+
+Win conditions are displayed as green rectangles on the game field. To satisfy a win condition, the specified object type must enter the area.
+
+5.4 Restriction Zones
+
+Restriction zones are displayed as red rectangles on the game field. You cannot place objects in these areas.
+
+6. Tips and Tricks
+
+- Use planks to create ramps and platforms for balls to roll on
+- Use heavy balls for more momentum and impact
+- Use bouncy balls for higher bounces
+- Use balloons to lift objects upward
+
+7. Troubleshooting
+
+7.1 Common Issues
+
+- If the game doesn't start, make sure you have Java 11 or higher installed
+- If the game runs slowly, try closing other applications to free up resources
+
+7.2 Reporting Bugs
+
+If you encounter any bugs or issues, please report them to the development team.
+
+8. Credits
+
+Mad Machines was developed by Gruppe 24 as part of the Software Engineering lab course at the University of Lübeck.

@@ -1,0 +1,64 @@
+{
+    "name": "Level 6",
+    "description": "Use a log, a box, and planks to guide the ball. Avoid the restriction zone.",
+    "staticObjects": [
+        {
+            "type": "Plank",
+            "x": 350,
+            "y": 400,
+            "rotation": 10,
+            "width": 200,
+            "height": 20
+        },
+        {
+            "type": "Log",
+            "x": 500,
+            "y": 350,
+            "rotation": 0,
+            "length": 120,
+            "diameter": 25
+        }
+    ],
+    "dynamicObjects": [
+        {
+            "type": "Ball",
+            "x": 150,
+            "y": 120,
+            "rotation": 0,
+            "radius": 15
+        },
+        {
+            "type": "Box",
+            "x": 250,
+            "y": 100,
+            "rotation": 0,
+            "width": 30,
+            "height": 30
+        }
+    ],
+    "winConditions": [
+        {
+            "objectType": "Ball",
+            "area": {
+                "x": 700,
+                "y": 420,
+                "width": 80,
+                "height": 80
+            }
+        }
+    ],
+    "restrictionZones": [
+        {
+            "x": 400,
+            "y": 350,
+            "width": 100,
+            "height": 100
+        }
+    ],
+    "inventory": {
+        "Ball": 1,
+        "Box": 1,
+        "Plank": 1,
+        "Log": 1
+    }
+}

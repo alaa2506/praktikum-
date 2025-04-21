@@ -1,0 +1,46 @@
+{
+    "name": "Level 1",
+    "description": "Get the ball into the green area.",
+    "staticObjects": [
+        {
+            "type": "Plank",
+            "x": 200,
+            "y": 300,
+            "rotation": 0,
+            "width": 200,
+            "height": 20
+        }
+    ],
+    "dynamicObjects": [
+        {
+            "type": "Ball",
+            "x": 100,
+            "y": 100,
+            "rotation": 0,
+            "radius": 15
+        }
+    ],
+    "winConditions": [
+        {
+            "objectType": "Ball",
+            "area": {
+                "x": 350,
+                "y": 350,
+                "width": 100,
+                "height": 100
+            }
+        }
+    ],
+    "restrictionZones": [
+        {
+            "x": 350,
+            "y": 350,
+            "width": 100,
+            "height": 100
+        }
+    ],
+    "inventory": {
+        "Ball": 1,
+        "Plank": 1
+    }
+}
